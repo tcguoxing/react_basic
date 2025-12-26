@@ -1,25 +1,68 @@
-import logo from './logo.svg';
-import './App.css';
+import Main from './main'
+import './index.css'
+import ListContent from './contentList/list'
+import Input from './components/input'
+import { createContext } from 'react'
 
+
+// 项目的根组件
+
+const list = [
+    {
+        id: 1,
+        title: '1',
+        completed: false
+    },
+    {
+        id: 2,
+        title: '2',
+        completed: true
+    },
+    {
+        id: 3,
+        title: '3',
+        completed: false
+    }
+]
+
+function getDifferentType(a) {
+  if (a) {
+    return <span>zzzzz</span>
+  } else {
+    return <span>tttt</span>
+  }
+}
+const num = '3'
+
+const onCLick=(e)=>{
+  console.log('click', e)
+  window.alert('click', e)
+}
+
+//   const Ctx = createContext()
+
+// function doThis() {
+//   alert('msg from do this.')
+// }
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      this is app
+      <ul >
+        {list.map(e =>{
+          // return getDifferentType(e.completed)
+          if(!e.completed) {
+            return <li key={e.id} onClick={(e) =>onCLick(e)}>{e.title}</li>
+          } 
+        })}
+        {`${num} + 1`}
+      </ul>
+      <Input/>
+      
+      <ListContent />
     </div>
   );
 }
 
 export default App;
+
