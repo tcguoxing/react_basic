@@ -4,6 +4,7 @@ import ListContent from './contentList/list'
 import Input from './components/input'
 import {createContext, useState} from 'react'
 import {useChangeVisible} from "./hooks/changeVisible";
+import ReduxUse from "./components/reduxUse";
 
 // 项目的根组件
 
@@ -63,6 +64,7 @@ function App() {
         {showInput && <Input/>}
 
       <button onClick={toggleVisible}>隐藏Input组件</button>
+        <ReduxUse/>
       <ListContent />
     </div>
   );
