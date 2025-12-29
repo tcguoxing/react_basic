@@ -2,8 +2,8 @@ import Main from './main'
 import './index.css'
 import ListContent from './contentList/list'
 import Input from './components/input'
-import { createContext } from 'react'
-
+import {createContext, useState} from 'react'
+import {useChangeVisible} from "./hooks/changeVisible";
 
 // 项目的根组件
 
@@ -45,6 +45,9 @@ const onCLick=(e)=>{
 //   alert('msg from do this.')
 // }
 function App() {
+
+    const {showInput, toggleVisible} = useChangeVisible()
+
   return (
     <div className="App">
       this is app
@@ -57,8 +60,9 @@ function App() {
         })}
         {`${num} + 1`}
       </ul>
-      <Input/>
-      
+        {showInput && <Input/>}
+
+      <button onClick={toggleVisible}>隐藏Input组件</button>
       <ListContent />
     </div>
   );
