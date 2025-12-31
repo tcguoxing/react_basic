@@ -51,9 +51,6 @@ importers:
       sass:
         specifier: 1.54.0
         version: 1.54.0
-      sass-loader:
-        specifier: 12.6.0
-        version: 12.6.0(sass@1.54.0)(webpack@5.104.1)
 
 packages:
 
