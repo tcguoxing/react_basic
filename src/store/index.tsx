@@ -14,8 +14,7 @@ const counterStore = createSlice({
                 state.count++
             }
         },
-        decrement(state, action) {
-            const {payload} = action
+        decrement(state) {
             state.count--
         },
 
