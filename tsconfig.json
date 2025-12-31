@@ -76,7 +76,7 @@
     "skipLibCheck": true,
 
   },
-  "include": ["src/**/*.tsx", "src/**/*.d.ts", "src/*.tsx", "src/*.d.ts", "src/**/*.js",],
+  "include": ["src/**/*.tsx", "src/**/*.d.ts", "src/*.tsx", "src/*.d.ts", "src/**/*.js", "src/request/index.ts",],
   // "include": [ "src/**/*.{ts,js,d.ts}"],
   "exclude": ["node_modules", "dist", "src/temp"]
 }
