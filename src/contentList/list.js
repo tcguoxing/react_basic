@@ -21,7 +21,7 @@ const currentUser = {
   let interval = null
   let activeId = ''
 
-    const Ctx = createContext()
+  const Ctx = createContext()
 
 function doThis() {
   alert('msg from do this.')
@@ -59,10 +59,10 @@ function LoadContent() {
        clearInterval(interval)
   }
 
-  const [activeId, setActiveId] = useState(null)
+  const [activeId, setActiveId] = useState('')
 
   function transFormId(id) {
-    setActiveId(id)
+    setActiveId(String(id))
   }
   const childContent = 'childContent'
   const child = <span>this is {childContent} span</span>

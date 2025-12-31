@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 
-export default function (sendComment) {
+export default function () {
 const [input, setInput] = useState('')  
 
 const inputRef = useRef(null)
