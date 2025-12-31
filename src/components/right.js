@@ -1,5 +1,5 @@
 import { useState } from "react"
-import "./index.css"
+import "../index.scss"
 
 export function right() {
   return <div  style={{ height: '100px', width: '600px', background: 'red' }}>right</div>
@@ -24,8 +24,8 @@ export function Button() {
     })())
   }
 
-  return <div>
-    <button className="rightStyle font-weight-bold" onClick={() => setCount(count + 1)}>{count}</button>
+  return <div className="rightStyle">
+    <button className="font-weight-bold" onClick={() => setCount(count + 1)}>{count}</button>
     <button onClick={minusCount}>{obj.count}</button>
     {/* {obj.count} */}
   </div>

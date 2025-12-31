@@ -1,4 +1,4 @@
-import Main from './main'
+import Main from './components/main'
 import './index.css'
 import ListContent from './contentList/list'
 import Input from './components/input'
@@ -66,6 +66,7 @@ function App() {
       <button onClick={toggleVisible}>隐藏Input组件</button>
         <ReduxUse/>
       <ListContent />
+        <Main />
     </div>
   );
 }
