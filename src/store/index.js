@@ -30,9 +30,10 @@ export const counterActions = counterStore.actions
 // 异步请求部分
 const fetchPublicKey = () =>
 {
-    const publicKey = 'http://117.72.46.111/dev/auth/public-key'
-    console.log("process.env.PUBLIC_KEY_URL: ", process.env.PUBLIC_KEY_URL)
-    return (dispatch) => getData('http://117.72.46.111/dev/auth/public-key').then(result =>{
+    if(!process.env.REACT_APP_LINK) {
+        console.error('please give one REACT_APP_LINK')
+    }
+    return (dispatch) => getData(process.env.REACT_APP_LINK).then(result =>{
         console.log('result:', result)
         dispatch(channelActions.getInfo(result.data.timestamp))
     })
