@@ -1,4 +1,4 @@
-import {configureStore, createSlice} from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
 
 const channelStore = createSlice({
     name:'channel',
@@ -6,16 +6,13 @@ const channelStore = createSlice({
         list: []
     },
     reducers:{
-
+      getInfo(state, action) {
+          const {payload} = action
+          state.list = [payload]
+      }
     }
 })
 
 export const channelActions = channelStore.actions
 
-const store = configureStore({
-    reducer: {
-        channel: channelStore.reducer
-    }
-})
-
-export default store
+export default channelStore
