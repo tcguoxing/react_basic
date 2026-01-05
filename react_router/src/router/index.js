@@ -5,6 +5,7 @@ import Login from '../page/Login'
 import Layout from "../page/Layout";
 import Board from "../page/Board";
 import About from "../page/About";
+import NotFound from "../page/NotFound";
 
 const router = createBrowserRouter([
     {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
                 element: <About/>
             }
         ]
+    },
+    {
+        path: '*',
+        element: <NotFound/>
     }
 ])
 
