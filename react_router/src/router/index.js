@@ -1,4 +1,4 @@
-import {createBrowserRouter} from "react-router-dom";
+import {createBrowserRouter, createHashRouter} from "react-router-dom";
 import App from "../App";
 import Article from "../page/Article";
 import Login from '../page/Login'
@@ -7,6 +7,7 @@ import Board from "../page/Board";
 import About from "../page/About";
 import NotFound from "../page/NotFound";
 
+// 哈希模式不需要后端支持，createHashRouter
 const router = createBrowserRouter([
     {
         path: '/',
