@@ -34,7 +34,6 @@ const fetchPublicKey = () =>
         console.error('please give one REACT_APP_LINK')
     }
     return (dispatch) => getData(process.env.REACT_APP_LINK).then(result =>{
-        console.log('result:', result)
         dispatch(channelActions.getInfo(result.data.timestamp))
     })
 }
