@@ -3,7 +3,9 @@ import {Link, useParams} from "react-router-dom";
 export default () => {
     const params = useParams() // 需要在router.index里加上:id
     let id = params.id
+    let name = params.name
     console.log('id: ', id)
+    console.log('name: ', name)
 
     return <div>
         这是登录页

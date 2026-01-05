@@ -9,7 +9,7 @@ export default () => {
     console.log('id: ', id)
     console.log('name: ', name)
     return <div>我是文章页
-        <button onClick={() => navigate('/login/1100')}>
+        <button onClick={() => navigate('/login/1100/wanggang')}>
             编程式导航，返回登录页
         </button>
     </div>

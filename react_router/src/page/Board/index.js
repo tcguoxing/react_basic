@@ -1,0 +1,1 @@
+export default ()  => <div>我是面板</div>
