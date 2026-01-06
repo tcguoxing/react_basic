@@ -2,9 +2,10 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@/*": [ // 此处为何是数组，list？
-        "src/*" // 提供别名解析
+      "@/*": [
+        "src/*"
       ]
     }
-  }
+  },
+  "commit": "此处为何是数组，list？提供别名解析"
 }
