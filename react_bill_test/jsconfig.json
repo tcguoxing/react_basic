@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@/*": [ // 此处为何是数组，list？
+        "src/*" // 提供别名解析
+      ]
+    }
+  }
+}
