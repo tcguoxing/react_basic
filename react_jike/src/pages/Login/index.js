@@ -19,7 +19,7 @@ const Login = () => {
             // 多条校验逻辑 先校验第一条 第一条通过之后再校验第二条
             rules={[
               {
-                required: true,
+                required: true, // 校验逻辑
                 message: '请输入手机号',
               },
               {
