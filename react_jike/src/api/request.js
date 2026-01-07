@@ -7,6 +7,8 @@ axios的封装逻辑
 
 import axios from 'axios'
 import {message} from "antd";
+import {useNavigate} from "react-router-dom";
+
 
 const request = axios.create({
     baseURL: process.env.REACT_APP_BASEURL,
@@ -30,14 +32,31 @@ request.interceptors.request.use(function (config) {
 // 添加响应拦截器
 //
 request.interceptors.response.use(function (response) {
+    console.log('response info: ', response)
+
     // 2xx 范围内的状态码都会触发该函数。
     // 对响应数据做点什么
-    return response.data;
+    if(response.status == 200) {
+        return response.data;
+    } else if (response.code == 401) {
+        navigate('/login')
+    } else {
+        throw new Error(response.message)
+    }
 }, function (error) {
     // 超出 2xx 范围的状态码都会触发该函数。
     // 对响应错误做点什么
     console.log('response error: ', error)
-    message.error(error.message)
+    console.log('response error status: ', error.status)
+    const navigate = useNavigate()
+    if (error.status == 401) {
+        navigate('/login')
+        return
+    } else {
+        // throw new Error(response.message)
+        message.error(error.message)
+        return;
+    }
     // return Promise.reject(error.message);
 });
 

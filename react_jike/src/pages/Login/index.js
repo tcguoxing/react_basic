@@ -8,11 +8,14 @@ import {fetchLogin} from "@/store/modules/user";
 
 const Login = () => {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
   const onFinish = async (values) => {
       console.log(values)
       values.password = process.env.REACT_APP_PWD
-      dispatch(fetchLogin(values))
+      await dispatch(fetchLogin(values))
+      navigate('/layout')
+      // 进入登录页；
   }
   return (
     <div className="login">
