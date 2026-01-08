@@ -8,23 +8,26 @@ import {
 import './index.scss'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+import {removeToken} from "@/utils";
+import {clearUserInfo} from "@/store/modules/user";
+import {clearToken} from "@/store/modules/token";
 
 const { Header, Sider } = Layout
 
 const items = [
   {
     label: '首页',
-    key: '/',
+    key: '/layout',
     icon: <HomeOutlined />,
   },
   {
     label: '文章管理',
-    key: '/article',
+    key: '/layout/article',
     icon: <DiffOutlined />,
   },
   {
     label: '创建文章',
-    key: '/publish',
+    key: '/layout/publish',
     icon: <EditOutlined />,
   },
 ]
@@ -44,14 +47,17 @@ const GeekLayout = () => {
   const selectedkey = location.pathname
 
   // 触发个人用户信息action
+
+
   const dispatch = useDispatch()
-
-
   // 退出登录确认回调
   const onConfirm = () => {
+    dispatch(clearUserInfo())
+    dispatch(clearToken())
+    navigate('/login')
   }
 
-  const name = useSelector(state => state.user.userInfo.name)
+  const name = useSelector(state => state.user.userInfo.username)
   return (
     <Layout>
       <Header className="header">
@@ -70,6 +76,7 @@ const GeekLayout = () => {
           <Menu
             mode="inline"
             theme="dark"
+            defaultSelectedKeys={'/layout'}
             selectedKeys={selectedkey}
             onClick={onMenuClick}
             items={items}

@@ -3,7 +3,7 @@ import { Card, Form, Input, Button, message } from 'antd'
 import logo from '@/assets/logo.png'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import {fetchLogin} from "@/store/modules/user";
+import { fetchToken } from "@/store/modules/token";
 
 
 const Login = () => {
@@ -13,7 +13,7 @@ const Login = () => {
   const onFinish = async (values) => {
       console.log(values)
       values.password = process.env.REACT_APP_PWD
-      await dispatch(fetchLogin(values))
+      await dispatch(fetchToken(values))
       navigate('/layout')
       // 进入登录页；
   }

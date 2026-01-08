@@ -8,6 +8,7 @@ axios的封装逻辑
 import axios from 'axios'
 import {message} from "antd";
 import {useNavigate} from "react-router-dom";
+import {getToken} from '@/utils'
 
 
 const request = axios.create({
@@ -22,6 +23,10 @@ const request = axios.create({
 // 请求发送之前
 request.interceptors.request.use(function (config) {
     // 在发送请求之前做些什么
+    const token = getToken()
+    if(token) {
+        config.headers.Authorization = `Bearer ${token}`
+    }
     return config;
 }, function (error) {
     // 对请求错误做些什么
@@ -36,9 +41,9 @@ request.interceptors.response.use(function (response) {
 
     // 2xx 范围内的状态码都会触发该函数。
     // 对响应数据做点什么
-    if(response.status == 200) {
+    if(String(response.status).indexOf('20') > -1) {
         return response.data;
-    } else if (response.code == 401) {
+    } else if (response.status == 401) {
         navigate('/login')
     } else {
         throw new Error(response.message)
