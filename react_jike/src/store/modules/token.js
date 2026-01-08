@@ -2,6 +2,7 @@ import { createSlice} from "@reduxjs/toolkit";
 import request from "@/api/request";
 import {removeToken, setToken} from "@/utils";
 import {setUserInfo} from "@/store/modules/user";
+import {LoginApi} from "@/api";
 
 const tokenStore = createSlice({
     name: 'token',
@@ -25,7 +26,7 @@ export const {setTokenVal, clearToken} = tokenStore.actions
 
 export const fetchToken=function(loginForm) {
     return async(dispatch) => {
-        let res = await request.post('/users/login', loginForm)
+        let res = await LoginApi(loginForm)
         removeToken()
         dispatch(setTokenVal(res.data.accessToken))
         dispatch(setUserInfo(res.data.user))

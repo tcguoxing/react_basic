@@ -11,8 +11,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import {removeToken} from "@/utils";
 import {clearUserInfo} from "@/store/modules/user";
 import {clearToken} from "@/store/modules/token";
+import {useEffect} from "react";
+import request from "@/api/request";
+import {getUsers} from "@/api";
 
 const { Header, Sider } = Layout
+
+
 
 const items = [
   {
@@ -56,6 +61,10 @@ const GeekLayout = () => {
     dispatch(clearToken())
     navigate('/login')
   }
+
+  useEffect(() => {
+    getUsers()
+  }, []);
 
   const name = useSelector(state => state.user.userInfo.username)
   return (

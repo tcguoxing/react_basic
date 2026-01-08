@@ -7,8 +7,9 @@ axios的封装逻辑
 
 import axios from 'axios'
 import {message} from "antd";
-import {useNavigate} from "react-router-dom";
-import {getToken} from '@/utils'
+import {getToken, removeToken} from '@/utils'
+import router from "@/router"
+
 
 
 const request = axios.create({
@@ -41,26 +42,24 @@ request.interceptors.response.use(function (response) {
 
     // 2xx 范围内的状态码都会触发该函数。
     // 对响应数据做点什么
-    if(String(response.status).indexOf('20') > -1) {
+    if (String(response.status).indexOf('20') > -1) {
         return response.data;
-    } else if (response.status == 401) {
-        navigate('/login')
     } else {
         throw new Error(response.message)
     }
 }, function (error) {
     // 超出 2xx 范围的状态码都会触发该函数。
     // 对响应错误做点什么
-    console.log('response error: ', error)
-    console.log('response error status: ', error.status)
-    const navigate = useNavigate()
-    if (error.status == 401) {
-        navigate('/login')
-        return
+    console.log('response error status: ', error)
+    // const navigate = useNavigate()
+    if (error.response.status === 401) {
+        console.log('response error: ', error)
+        removeToken()
+        router.navigate('/login')
+        window.location.reload()
     } else {
         // throw new Error(response.message)
         message.error(error.message)
-        return;
     }
     // return Promise.reject(error.message);
 });

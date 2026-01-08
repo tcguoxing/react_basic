@@ -7,6 +7,5 @@ export function removeToken() {
 }
 
 export function setToken(val) {
-    console.log('set token: ', val)
     localStorage.setItem('token', val)
 }
